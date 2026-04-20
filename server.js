@@ -23,14 +23,15 @@ app.use(express.urlencoded({extended: true}));
     res.render("harid");
  });
 
-//  app.get("/hello", function (req, res)  {
-//     res.end(`<h1 style="background: red">HELLO WORLD</h1>`);
-//  });
-//  app.get("/gift", function (req, res)  {
-//     res.end(`<h1>Siz sovgalar sahifasidasiz</h1>`);
-//  });
-
 const server = http.createServer( app);
+ app.get("/hello", function (req, res)  {
+    res.end(`<h1 style="background: red">HELLO WORLD</h1>`);
+ });
+ app.get("/gift", function (req, res)  {
+    res.end(`<h1>Siz sovgalar sahifasidasiz</h1>`);
+ });
+
+const server = http.createServer(app);
 let PORT = 3000;
 server.listen(PORT, function () {
     console.log(`The server is running successfully on port ${PORT}`); 

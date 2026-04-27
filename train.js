@@ -1,19 +1,35 @@
-
-//MITASK-A
-function countLetter(letter, word) {
-
+//MITASK B
+function countDigits(str) {
   let count = 0;
 
-  for (let i = 0; i < word.length; i++) {
-
-    if (word[i] === letter) {
+  for(let i = 0; i < str.length; i++) {
+    if (!isNaN(str[i]) && str[i] !== " ") {
       count++;
     }
   }
   return count;
 }
+console.log(countDigits("nlw7fjee8la4"))
 
-console.log(countLetter("e", "engineer")); 
+
+
+
+
+// MITASK-A
+// function countLetter(letter, word) {
+
+//   let count = 0;
+
+//   for (let i = 0; i < word.length; i++) {
+
+//     if (word[i] === letter) {
+//       count++;
+//     }
+//   }
+//   return count;
+// }
+
+// console.log(countLetter("e", "engineer")); 
 
 //===============================================
 

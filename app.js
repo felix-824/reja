@@ -46,14 +46,21 @@ app.use(express.urlencoded({extended: true}));
  // 4 Routing code
  // POST request (frontenddan ma’lumot keladi)
  app.post("/create-item", (req, res) => {
+    console.log("user entered / create-item");
+   
+    const new_reja = req.body.reja;
+    db.collection("plans").insertOne({ reja: new_reja }, (err, data) => {
+      if (err) {
+         console.log(err);
+         res.end("something went wrong");
+      } else {
+         res.end("successfully added");
+      }
+    });
 
-    // req.body → frontenddan kelgan data
-    console.log(req.body);
-    
-
-     // clientga JSON javob qaytaramiz
-    res.json({test: "success"});
- })
+   //   // clientga JSON javob qaytaramiz
+   //  res.json({test: "success"});
+ });
 
  app.get('/author', (req, res) => {
    res.render("author", {user: user });
@@ -61,8 +68,17 @@ app.use(express.urlencoded({extended: true}));
 
  // GET request (asosiy sahifa)
  app.get("/", function (req, res) {
-    // views papkadagi harid.ejs faylni render qiladi
-    res.render("reja");
+   console.log('user entered /');
+   db.collection("plans")
+   .find()
+   .toArray((err, data) => {
+      if (err) {
+         console.log(err);
+         res.end("something went wrong");
+      } else {
+         res.render("reja", { items: data });
+      }
+   });
  });
 
 module.exports = app;

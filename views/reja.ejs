@@ -35,12 +35,10 @@
        </form>
       </div>
 
-  
-
-       <ul id="item-list" class="list-group pb-5">
+     <ul id="item-list" class="list-group pb-5">
         <% items.map(function(item)  { %>
-           <li 
-        class="list-group-item list-group-item-info d-flex aligin-items-center justify-content-between"
+        <li 
+           class="list-group-item list-group-item-info d-flex aligin-items-center justify-content-between"
         >
         <span class="item-text"><%=item.reja%></span>
         <div>
@@ -57,7 +55,7 @@
         </li>
         <% }) %>
        
-       </ul>
+      </ul>
 
         <button
           id="clean-all"
@@ -65,7 +63,9 @@
           style="border-radius: 20px ; border: 0px; height: 45px;  margin-top: 20px; background: #bf2c34;">
          Hamma Rejalarni O'chirish
         </button>
-
     </div> 
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/browser.js"></script>
 </body>
 </html>

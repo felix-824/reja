@@ -17,6 +17,7 @@ fs.readFile("database/user.json", "utf-8", (err, data) => {
 
 //MongoDB Chaqirish
 const db = require("./server").db();
+const mongodb = require("mongodb");
 
 // 1 Kirish code
 
@@ -45,13 +46,21 @@ app.use(express.urlencoded({extended: true}));
  // POST request (frontenddan ma’lumot keladi)
  app.post("/create-item", (req, res) => {    ///create-item" =>  http://localhost:3000/create-item   
     console.log("user entered / create-item");
-   
     const new_reja = req.body.reja;   // .body=> user yuborgan data /.reja=> formdagi input nomi user yozdi > IT urganamiz
     //req.body = { reja: "non olish"} => new_reja = "non olish"
     db.collection("plans").insertOne({ reja: new_reja }, (err, data) => {  //collection = jadval /.insertOne(...) =databaseda 1 ta ma’lumot qo‘shadi
      console.log(data.ops);
      res.json(data.ops[0]);
     });
+ });
+
+ app.post("/delete-item", (req, res) => {
+   const id = req.body.id;
+   db.collection("plans").deleteOne(
+      {_id: new mongodb.ObjectId(id) },
+       function (err,data) {
+         res.json({state: "success"});
+   });
  });
 
  app.get('/author', (req, res) => {  //'/author' http://localhost:3000/author

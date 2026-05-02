@@ -1,15 +1,77 @@
-//MITASK B
-function countDigits(str) {
-  let count = 0;
-
-  for(let i = 0; i < str.length; i++) {
-    if (!isNaN(str[i]) && str[i] !== " ") {
-      count++;
-    }
+//MITASK C
+class Shop {
+  constructor(non, kola, tuxum) {
+    this.non = non;
+    this.kola = kola;
+    this.tuxum = tuxum;
   }
-  return count;
-}
-console.log(countDigits("nlw7fjee8la4"))
+
+  //method
+  qoldiq() {
+    let now = new Date();
+    let hour = now.getHours();
+    let minute = now.getMinutes();
+
+    console.log(
+      `Hozir ${hour}:${minute} da omborda
+       ${this.non} dona non,  
+       ${this.kola} dona kola,
+       ${this.tuxum} dona tuxum qoldi`);
+  }
+
+    sotish(maxsulot, miqdor) {
+
+      if(maxsulot === "non") {
+        this.non -= miqdor;
+      }
+
+    if(maxsulot === "kola") {
+        this.kola -= miqdor;
+      }
+
+      if(maxsulot === "tuxum") {
+        this.tuxum -= miqdor;
+      }
+    }
+
+     qabul(maxsulot, miqdor) {
+
+      if(maxsulot === "non") {
+        this.non += miqdor;
+      }
+
+    if(maxsulot === "kola") {
+        this.kola += miqdor;
+      }
+
+      if(maxsulot === "tuxum") {
+        this.tuxum += miqdor;
+      }
+    }
+};
+
+const shop = new Shop(10, 10, 10);
+
+shop.sotish("non", 4);
+shop.qabul("tuxum", 30);
+shop.qoldiq();
+
+
+
+
+
+//MITASK B
+// function countDigits(str) {
+//   let count = 0;
+
+//   for(let i = 0; i < str.length; i++) {
+//     if (!isNaN(str[i]) && str[i] !== " ") {
+//       count++;
+//     }
+//   }
+//   return count;
+// }
+// console.log(countDigits("nlw7fjee8la4"))
 
 
 

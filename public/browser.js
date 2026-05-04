@@ -1,3 +1,5 @@
+// const { response } = require("express");
+
 console.log("FrontEnd JS ishga tushdi");
 
 function itemTemplate(item) {
@@ -19,27 +21,27 @@ function itemTemplate(item) {
         </li>`;
 }
 
-let createField = document.getElementById("create-field");
+let createField = document.getElementById("create-field");  //HTML elementni topadi inputni
 
 document.getElementById("create-form").addEventListener("submit", function (e) {
-  e.preventDefault();
+  e.preventDefault();  //form default yuborilishini to‘xtatadi
 
    axios
    .post("/create-item", {reja: createField.value })
-   .then((response) => {
-     document.getElementById("item-list").insertAdjacentHTML("beforeend", itemTemplate(response.data))
-     createField.value = "";
-     createField.focus();
+   .then((response) => {    //serverdan javob kelganda ishlaydi
+     document.getElementById("item-list").insertAdjacentHTML("beforeend", itemTemplate(response.data)) //serverdan kelgan data → HTMLga aylantiriladi
+     createField.value = "";  //inputni tozalaydi
+     createField.focus();     //cursorni qaytarad
    })
    .catch((err) => {
     console.log("Iltimos qaytadan harakat qiling");
    });
 });
 
-document.addEventListener("click", function (e) {
+document.addEventListener("click", function (e) {  //butun sahifadagi clickni eshitadi
     //delete oper
     console.log(e.target);
-    if (e.target.classList.contains("delete-me")) {
+    if (e.target.classList.contains("delete-me")) {    //bosilgan elementda delete-me class bormi?
       if (confirm("Aniq ochirmoqchimisiz")) {
         axios
         .post("/delete-item", {id: e.target.getAttribute("data-id") })
@@ -54,8 +56,33 @@ document.addEventListener("click", function (e) {
     }
 
     //edit oper
-    if(e.target.classList.contains("edit-me")) {
-        alert("siz edit tugmasini bosdingiz");
+  if (e.target.classList.contains("edit-me")) {
+    let userInput = prompt("o'zgartrish kiriting",
+       e.target.parentElement.parentElement.querySelector(".item-text").innerHTML
+      );
+    if (userInput) {
+     axios.
+     post("/edit-item", {
+      id: e.target.getAttribute("data-id"),
+       new_input: userInput,
+      }).then(response => {
+        console.log(response.data);
+        e.target.parentElement.parentElement.querySelector(
+          ".item-text"
+        ).innerHTML = userInput;
+      })
+      .catch(err => {
+         console.log("Iltimos qaytadan harakat qiling");
+      });
     }
+  }
+
 });
 
+
+document.getElementById("clean-all").addEventListener("click", function() {
+  axios.post("/delete-all", {delete_all: true}).then(respose => {
+   alert(respose.data.state);
+   document.location.reload();
+  });
+});

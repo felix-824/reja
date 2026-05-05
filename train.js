@@ -1,60 +1,78 @@
+//MITASK -D
+function checkContent(a, b) {
+ if(a.length !== b.length ) {
+   return false;
+ } 
+  let sortedA = a.split("").sort().join("") ;
+  let sortedB = b.split("").sort().join("") ;
+ 
+  if(sortedA === sortedB) {
+     return true;
+  }
+  return false;
+ 
+}
+
+console.log(checkContent("hello", "oellh"));
+
+
 //MITASK C
-class Shop {
-  constructor(non, kola, tuxum) {
-    this.non = non;
-    this.kola = kola;
-    this.tuxum = tuxum;
-  }
+// class Shop {
+//   constructor(non, kola, tuxum) {
+//     this.non = non;
+//     this.kola = kola;
+//     this.tuxum = tuxum;
+//   }
 
-  //method
-  qoldiq() {
-    let now = new Date();
-    let hour = now.getHours();
-    let minute = now.getMinutes();
+//   //method
+//   qoldiq() {
+//     let now = new Date();
+//     let hour = now.getHours();
+//     let minute = now.getMinutes();
 
-    console.log(
-      `Hozir ${hour}:${minute} da omborda
-       ${this.non} dona non,  
-       ${this.kola} dona kola,
-       ${this.tuxum} dona tuxum qoldi`);
-  }
+//     console.log(
+//       `Hozir ${hour}:${minute} da omborda
+//        ${this.non} dona non,  
+//        ${this.kola} dona kola,
+//        ${this.tuxum} dona tuxum qoldi`);
+//   }
 
-    sotish(maxsulot, miqdor) {
+//     sotish(maxsulot, miqdor) {
 
-      if(maxsulot === "non") {
-        this.non -= miqdor;
-      }
+//       if(maxsulot === "non") {
+//         this.non -= miqdor;
+//       }
 
-    if(maxsulot === "kola") {
-        this.kola -= miqdor;
-      }
+//     if(maxsulot === "kola") {
+//         this.kola -= miqdor;
+//       }
 
-      if(maxsulot === "tuxum") {
-        this.tuxum -= miqdor;
-      }
-    }
+//       if(maxsulot === "tuxum") {
+//         this.tuxum -= miqdor;
+//       }
+//     }
 
-     qabul(maxsulot, miqdor) {
+//      qabul(maxsulot, miqdor) {
 
-      if(maxsulot === "non") {
-        this.non += miqdor;
-      }
+//       if(maxsulot === "non") {
+//         this.non += miqdor;
+//       }
 
-    if(maxsulot === "kola") {
-        this.kola += miqdor;
-      }
+//     if(maxsulot === "kola") {
+//         this.kola += miqdor;
+//       }
 
-      if(maxsulot === "tuxum") {
-        this.tuxum += miqdor;
-      }
-    }
-};
+//       if(maxsulot === "tuxum") {
+//         this.tuxum += miqdor;
+//       }
+//     }
+// };
 
-const shop = new Shop(10, 10, 10);
+// const shop = new Shop(10, 10, 10);
 
-shop.sotish("non", 4);
-shop.qabul("tuxum", 30);
-shop.qoldiq();
+// shop.sotish("non", 4);
+// shop.qabul("tuxum", 30);
+// shop.qoldiq();
 
 
 

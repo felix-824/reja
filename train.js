@@ -1,19 +1,31 @@
-//MITASK -D
-function checkContent(a, b) {
- if(a.length !== b.length ) {
-   return false;
- } 
-  let sortedA = a.split("").sort().join("") ;
-  let sortedB = b.split("").sort().join("") ;
- 
-  if(sortedA === sortedB) {
-     return true;
-  }
-  return false;
- 
+//MITASK -E
+function getReverse(str) {
+  let reversed = "";
+        
+       for (let i = str.length - 1; i >= 0; i--) {
+          reversed += str[i]
+        }
+  return reversed;
 }
 
-console.log(checkContent("hello", "oellh"));
+console.log(getReverse ("hello world"));
+
+//MITASK -D
+// function checkContent(a, b) {
+//  if(a.length !== b.length ) {
+//    return false;
+//  } 
+//   let sortedA = a.split("").sort().join("") ;
+//   let sortedB = b.split("").sort().join("") ;
+ 
+//   if(sortedA === sortedB) {
+//      return true;
+//   }
+//   return false;
+ 
+// }
+
+// console.log(checkContent("hello", "oellh"));
 
 
 //MITASK C

@@ -2,7 +2,7 @@
 
 console.log("FrontEnd JS ishga tushdi");
 
-function itemTemplate(item) {
+function itemTemplate(item) {  //HTML yasaydi
     return` <li 
            class="list-group-item list-group-item-info d-flex aligin-items-center justify-content-between">
         <span class="item-text">${item.reja}</span>
@@ -27,7 +27,7 @@ document.getElementById("create-form").addEventListener("submit", function (e) {
   e.preventDefault();  //form default yuborilishini to‘xtatadi
 
    axios
-   .post("/create-item", {reja: createField.value })
+   .post("/create-item", {reja: createField.value })  //REST API
    .then((response) => {    //serverdan javob kelganda ishlaydi
      document.getElementById("item-list").insertAdjacentHTML("beforeend", itemTemplate(response.data)) //serverdan kelgan data → HTMLga aylantiriladi
      createField.value = "";  //inputni tozalaydi
@@ -81,7 +81,8 @@ document.addEventListener("click", function (e) {  //butun sahifadagi clickni es
 
 
 document.getElementById("clean-all").addEventListener("click", function() {
-  axios.post("/delete-all", {delete_all: true}).then(respose => {
+  axios.post("/delete-all", {delete_all: true})
+  .then(respose => {
    alert(respose.data.state);
    document.location.reload();
   });

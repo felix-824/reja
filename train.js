@@ -1,14 +1,31 @@
-//MITASK -E
-function getReverse(str) {
-  let reversed = "";
-        
-       for (let i = str.length - 1; i >= 0; i--) {
-          reversed += str[i]
-        }
-  return reversed;
+//MITASK - F
+function findDoublers (str) {
+ let seen = ""; 
+  
+  for(let i = 0;  i <  str.length; i++) {
+    
+    if(seen.includes(str[i])) {
+        return true;
+    }
+      seen += str[i]
+  }
+    return false;
 }
+console.log(findDoublers("express"));
 
-console.log(getReverse ("hello world"));
+
+
+//MITASK -E
+// function getReverse(str) {
+//   let reversed = "";
+        
+//        for (let i = str.length - 1; i >= 0; i--) {
+//           reversed += str[i]
+//         }
+//   return reversed;
+// }
+
+// console.log(getReverse ("hello world"));
 
 //MITASK -D
 // function checkContent(a, b) {

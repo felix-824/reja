@@ -30,16 +30,21 @@ app.use(express.urlencoded({extended: true})); //DP Middleware  Traditional api 
  // POST request (frontenddan ma’lumot keladi)
  app.post("/create-item", (req, res) => {    ///create-item" =>  http://localhost:3000/create-item   
     console.log("user entered / create-item");
+    console.log("STEP2 Backenda")
+    console.log("STEP3 Backenda=>D.B")
     const new_reja = req.body.reja;   // .body=> user yuborgan data /.reja=> formdagi input nomi user yozdi > IT urganamiz
     //req.body = { reja: "IT urganamiz"} => new_reja = "IT urganamiz"
     db.collection("plans").insertOne({ reja: new_reja }, (err, data) => {  //collection = jadval /.insertOne(...) =databaseda 1 ta ma’lumot qo‘shadi
-     console.log(data.ops);  //yangi qo‘shilgan data
+     console.log("malumot qushildi", data.ops);  //yangi qo‘shilgan data
+     console.log("STEP4 DB => Backenda")
+     console.log("STEP5 Backenda => FrontEnd ")
      res.json(data.ops[0]);  //frontendga yuboradi
     });
  });
 
  //DELETE
  app.post("/delete-item", (req, res) => {
+   console.log("user entered / delete-item");
    const id = req.body.id;                   //qaysi item o‘chiriladi
    db.collection("plans").deleteOne(       //bitta o‘chiradi
       {_id: new mongodb.ObjectId(id) },
@@ -50,6 +55,7 @@ app.use(express.urlencoded({extended: true})); //DP Middleware  Traditional api 
 
 //EDIT
  app.post("/edit-item", (req, res) => {
+    console.log("user entered / edit-item");
    const data = req.body;
    console.log(data);
    db.collection("plans").findOneAndUpdate(     //update qiladi
@@ -61,15 +67,13 @@ app.use(express.urlencoded({extended: true})); //DP Middleware  Traditional api 
    );
  });
 
-
- 
-
  app.get('/author', (req, res) => {  //'/author' http://localhost:3000/author
    res.render("author", {user: user });  //.res.render= HTML (EJS) sahifa chiqaradi
  });
 
 
- app.post("/delete-all", (req, res) => {
+ app.post("/delete-all", (req, res) => { 
+    console.log("user entered / delete-all-item");
    if (req.body.delete_all) {
       db.collection("plans").deleteMany(function () {
          res.json({ state: "hamma rejalar ochirildi"});
@@ -77,20 +81,17 @@ app.use(express.urlencoded({extended: true})); //DP Middleware  Traditional api 
    }
  });
 
-
- 
  app.get("/", function (req, res) {      // GET request (asosiy sahifa) http://localhost:3000
-   console.log('user entered /');
+   console.log('foydalanuvchi kiitdi /');
+     console.log('STEP2 BACKEND');
+
+     console.log('STEP3 BACKEND => DB');
    db.collection("plans")
    .find()  //ma’lumotlarni qidiradi / oladi
    .toArray((err, data) => {
-      if (err) {
-         console.log(err);
-         res.end("something went wrong");
-      } else {
-         res.render("reja", { items: data }); //res.render=sahifa chiqaradi  / "reja" =>view nomi file:views/reja.ejs
-         //{ items: data }=>
-      }
+       console.log('STEP4 DB => BACKEND');
+       console.log('STEP5 BACKEND =>FrontEnd');
+         res.render("reja", { items: data });     //EJS(data) .HTML’ni browserga yuboradi
    });
  });
 

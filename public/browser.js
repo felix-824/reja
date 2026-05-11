@@ -26,10 +26,16 @@ let createField = document.getElementById("create-field");  //HTML elementni top
 document.getElementById("create-form").addEventListener("submit", function (e) {
   e.preventDefault();  //form default yuborilishini to‘xtatadi
 
+  console.log("STEP1: FONTENTDAN dan BACKENDga REST API jonatish")
+
    axios
    .post("/create-item", {reja: createField.value })  //REST API
    .then((response) => {    //serverdan javob kelganda ishlaydi
-     document.getElementById("item-list").insertAdjacentHTML("beforeend", itemTemplate(response.data)) //serverdan kelgan data → HTMLga aylantiriladi
+    console.log("STEP6 FrontEnd ga qaytish ")
+    console.log("AxiosResponse:", Response);
+     document
+     .getElementById("item-list")
+     .insertAdjacentHTML("beforeend", itemTemplate(response.data)) //serverdan kelgan data → HTMLga aylantiriladi
      createField.value = "";  //inputni tozalaydi
      createField.focus();     //cursorni qaytarad
    })
@@ -38,9 +44,10 @@ document.getElementById("create-form").addEventListener("submit", function (e) {
    });
 });
 
+  //delete oper
 document.addEventListener("click", function (e) {  //butun sahifadagi clickni eshitadi
-    //delete oper
     console.log(e.target);
+
     if (e.target.classList.contains("delete-me")) {    //bosilgan elementda delete-me class bormi?
       if (confirm("Aniq ochirmoqchimisiz")) {
         axios
@@ -54,8 +61,10 @@ document.addEventListener("click", function (e) {  //butun sahifadagi clickni es
         });
       }
     }
+     });
 
     //edit oper
+document.addEventListener("click", function (e) {
   if (e.target.classList.contains("edit-me")) {
     let userInput = prompt("o'zgartrish kiriting",
        e.target.parentElement.parentElement.querySelector(".item-text").innerHTML
@@ -75,8 +84,7 @@ document.addEventListener("click", function (e) {  //butun sahifadagi clickni es
          console.log("Iltimos qaytadan harakat qiling");
       });
     }
-  }
-
+  };
 });
 
 

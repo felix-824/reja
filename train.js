@@ -1,24 +1,38 @@
-//MITASK - F
-function findDoublers (str) {
- let seen = ""; 
-  
-  for(let i = 0;  i <  str.length; i++) {
-    
-    if(seen.includes(str[i])) {
-        return true;
-    }
-      seen += str[i]
-  }
-    return false;
+//MITASK - G
+function getHighestIndex(arr) {
+  let max = arr [0];
+  let index = 0;
+   for(let i = 0;  i <  arr.length; i++)
+     
+     if (arr[i] > max) {
+       max = arr[i];
+       index = i;
+     }
+  return index;
 }
-console.log(findDoublers("express"));
+let result = getHighestIndex([999, 200, 12, 999, 800]);
+console.log(result);
 
 
+
+//MITASK - F
+// function findDoublers(str) {
+//   let seen = '';
+
+//   for (let i = 0; i < str.length; i++) {
+//     if (seen.includes(str[i])) {
+//       return true;
+//     }
+//     seen += str[i];
+//   }
+//   return false;
+// }
+// console.log(findDoublers('express'));
 
 //MITASK -E
 // function getReverse(str) {
 //   let reversed = "";
-        
+
 //        for (let i = str.length - 1; i >= 0; i--) {
 //           reversed += str[i]
 //         }
@@ -31,19 +45,18 @@ console.log(findDoublers("express"));
 // function checkContent(a, b) {
 //  if(a.length !== b.length ) {
 //    return false;
-//  } 
+//  }
 //   let sortedA = a.split("").sort().join("") ;
 //   let sortedB = b.split("").sort().join("") ;
- 
+
 //   if(sortedA === sortedB) {
 //      return true;
 //   }
 //   return false;
- 
+
 // }
 
 // console.log(checkContent("hello", "oellh"));
-
 
 //MITASK C
 // class Shop {
@@ -61,7 +74,7 @@ console.log(findDoublers("express"));
 
 //     console.log(
 //       `Hozir ${hour}:${minute} da omborda
-//        ${this.non} dona non,  
+//        ${this.non} dona non,
 //        ${this.kola} dona kola,
 //        ${this.tuxum} dona tuxum qoldi`);
 //   }
@@ -103,10 +116,6 @@ console.log(findDoublers("express"));
 // shop.qabul("tuxum", 30);
 // shop.qoldiq();
 
-
-
-
-
 //MITASK B
 // function countDigits(str) {
 //   let count = 0;
@@ -119,10 +128,6 @@ console.log(findDoublers("express"));
 //   return count;
 // }
 // console.log(countDigits("nlw7fjee8la4"))
-
-
-
-
 
 // MITASK-A
 // function countLetter(letter, word) {
@@ -138,14 +143,11 @@ console.log(findDoublers("express"));
 //   return count;
 // }
 
-// console.log(countLetter("e", "engineer")); 
+// console.log(countLetter("e", "engineer"));
 
 //===============================================
 
-// 
-
-
-
+//
 
 // console.log("Jack ma maslahatlari");
 // const list = [
@@ -170,12 +172,11 @@ console.log(findDoublers("express"));
 //             setTimeout(() => {
 //                 resolve(list[5]);
 //             }, 5000);
-//            }); 
+//            });
 //     }
-// } 
+// }
 
 //=============================================================
-
 
 //= call via then/catch
 
@@ -188,7 +189,6 @@ console.log(findDoublers("express"));
 // //     console.log("ERROR:" err);
 // // });
 // // console.log("passed here  1");
-
 
 //= call via asyn/await
 // async function run () {

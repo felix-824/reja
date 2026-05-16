@@ -1,16 +1,38 @@
-//MITASK -H
-function getPositive(arr) {
+//MITASK - I
+function majorityElement(arr) {
+  let count = {}  
+  for(let i = 0; i < arr.length; i++)
+      if(count[arr[i]] ) {
+        count[arr[i]]++;
+      }else{
+        count[arr[i]] = 1;
+      }
+  let maxCount = 0;
+  let result = null;
   
- let result = "";
-  
-   for(let i = 0;  i <  arr.length; i++)
-     
-     if (arr[i] > 0 ) {
-       result += arr[i];
-     }
-  return result;
+  for (let key in count) {
+    if(count[key] > maxCount) {
+      maxCount = count[key];
+      result = key;
+    }
+   }
+      return result;
 }
-console.log(getPositive([1,-7,9, 8, 0, 2]));
+console.log(majorityElement([1,8,3,7,8,7,5,8]))
+
+//MITASK -H
+// function getPositive(arr) {
+  
+//  let result = "";
+  
+//    for(let i = 0;  i <  arr.length; i++)
+     
+//      if (arr[i] > 0 ) {
+//        result += arr[i];
+//      }
+//   return result;
+// }
+// console.log(getPositive([1,-7,9, 8, 0, 2]));
 
 
 //MITASK - G

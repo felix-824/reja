@@ -1,24 +1,45 @@
-//MITASK - I
-function majorityElement(arr) {
-  let count = {}  
-  for(let i = 0; i < arr.length; i++)
-      if(count[arr[i]] ) {
-        count[arr[i]]++;
-      }else{
-        count[arr[i]] = 1;
-      }
-  let maxCount = 0;
-  let result = null;
-  
-  for (let key in count) {
-    if(count[key] > maxCount) {
-      maxCount = count[key];
-      result = key;
+//MITASK - J
+function findLongestWord(str) {
+
+  let words = str.split(" ")
+  let longest = words[0];
+
+  for(let i = 0; i < words.length; i++) {
+
+    if (words[i].length > longest.length) {
+      longest = words[i]
     }
-   }
-      return result;
+  }
+  return longest;
 }
-console.log(majorityElement([1,8,3,7,8,7,5,8]))
+console.log(
+   findLongestWord(" Hi I am David I came from Uzbekistan! ")
+)
+
+
+
+
+//MITASK - I
+// function majorityElement(arr) {
+//   let count = {}  
+//   for(let i = 0; i < arr.length; i++)
+//       if(count[arr[i]] ) {
+//         count[arr[i]]++;
+//       }else{
+//         count[arr[i]] = 1;
+//       }
+//   let maxCount = 0;
+//   let result = null;
+  
+//   for (let key in count) {
+//     if(count[key] > maxCount) {
+//       maxCount = count[key];
+//       result = key;
+//     }
+//    }
+//       return result;
+// }
+// console.log(majorityElement([1,8,3,7,8,7,5,8]))
 
 //MITASK -H
 // function getPositive(arr) {

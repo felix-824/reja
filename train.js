@@ -1,23 +1,36 @@
-//MITASK - J
-function findLongestWord(str) {
+//MITASK -K
+function countVowels(str) {
 
-  let words = str.split(" ")
-  let longest = words[0];
+  let vowels = "aeiou";
+  let count = 0;
 
-  for(let i = 0; i < words.length; i++) {
+  for(let i = 0; i < str.length; i++) {
 
-    if (words[i].length > longest.length) {
-      longest = words[i]
+    if(vowels.includes(str[i])) {
+      count++;
     }
   }
-  return longest;
+  return count;
 }
-console.log(
-   findLongestWord(" Hi I am David I came from Uzbekistan! ")
-)
+console.log(countVowels("uzbekistan"));
 
+//MITASK - J
+// function findLongestWord(str) {
 
+//   let words = str.split(" ")
+//   let longest = words[0];
 
+//   for(let i = 0; i < words.length; i++) {
+
+//     if (words[i].length > longest.length) {
+//       longest = words[i]
+//     }
+//   }
+//   return longest;
+// }
+// console.log(
+//    findLongestWord(" Hi I am David I came from Uzbekistan! ")
+// )
 
 //MITASK - I
 // function majorityElement(arr) {
